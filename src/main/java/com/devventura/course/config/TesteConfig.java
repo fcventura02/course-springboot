@@ -1,6 +1,7 @@
 package com.devventura.course.config;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,8 +52,17 @@ public class TesteConfig implements CommandLineRunner{
 		Product p5 = new Product(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, "");
 		
 		userRepository.saveAll(Arrays.asList(u1, u2));
-		orderRepository.saveAll(Arrays.asList(o1,o2,o3));
+		orderRepository.saveAll(Arrays.asList(o1,o2,o3));		
 		categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+		productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
+
+		p1.getCategories().add(cat2);
+		p2.getCategories().add(cat1);
+		p2.getCategories().add(cat3);
+		p3.getCategories().add(cat3);
+		p4.getCategories().add(cat3);
+		p5.getCategories().add(cat2);
+		
 		productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
 	}
 	
